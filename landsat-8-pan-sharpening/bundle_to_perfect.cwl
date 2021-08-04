@@ -33,4 +33,7 @@ outputs:
       glob: "*.tif"
     type: File
 
+stderr: stderr
+stdout: stdout
+
 cwlVersion: v1.0

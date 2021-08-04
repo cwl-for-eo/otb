@@ -26,4 +26,7 @@ outputs:
       glob: "xs_stack.tif"
     type: File
 
+stderr: stderr
+stdout: stdout
+
 cwlVersion: v1.0
