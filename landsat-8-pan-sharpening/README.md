@@ -8,9 +8,11 @@ These steps are described as a diagram:
 
 ```mermaid
 graph TD
-A[Client] --> B[Load Balancer]
-B --> C[Server01]
-B --> D[Server02]
+A[stac xs] --> C[subset xs]
+B[stac p] --> D[subset p]
+C --> E[concatenate xs]
+D --> F[bundle_to_perfect]
+E --> F
 ```
 
 ```
