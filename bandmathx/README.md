@@ -17,50 +17,13 @@ The command wrapped by the CWL `CommandLineTool` is:
 The CWL document content is:
 
 ```yaml
-class: CommandLineTool
-
-requirements:
-  InlineJavascriptRequirement: {}
-  DockerRequirement: 
-    dockerPull: terradue/otb-7.2.0
-
-baseCommand: otbcli_BandMathX
-arguments: 
-- -out
-- valueFrom: ${ return inputs.stac_item.split("/").slice(-1)[0] + ".tif"; }
-- -exp
-- '(im3b1 == 8 or im3b1 == 9 or im3b1 == 0 or im3b1 == 1 or im3b1 == 2 or im3b1 == 10 or im3b1 == 11) ? -2 : (im1b1 - im2b1) / (im1b1 + im2b1)'
-
-inputs:
-
-  tifs:
-    type: string[]
-    inputBinding:
-      position: 5
-      prefix: -il
-      separate: true
-  
-  stac_item:
-    type: string
-    
-outputs:
-
-  nbr:
-    outputBinding:
-      glob: "*.tif"
-    type: File
-
-cwlVersion: v1.0
+--8<-- otb/bandmathx/band_math.cwl
 ```
 
 It may be run with the parameters:
 
 ```yaml
-stac_item: "https://earth-search.aws.element84.com/v0/collections/sentinel-s2-l2a-cogs/items/S2B_53HPA_20210723_0_L2A"
-tifs: 
-- /vsicurl/https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/53/H/PA/2021/7/S2B_53HPA_20210723_0_L2A/B8A.tif 
-- /vsicurl/https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/53/H/PA/2021/7/S2B_53HPA_20210723_0_L2A/B12.tif 
-- /vsicurl/https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/53/H/PA/2021/7/S2B_53HPA_20210723_0_L2A/SCL.tif 
+--8<-- otb/bandmathx/band_math.yml
 ```
 
 The execution will generate:
