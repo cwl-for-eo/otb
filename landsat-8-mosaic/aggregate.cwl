@@ -9,10 +9,6 @@ baseCommand: otbcli_Mosaic
 arguments: 
 - -out
 - mosaic.tif
-- -comp.feather
-- slim
-- -harmo.method 
-- rgb
 
 inputs:
 
