@@ -1,6 +1,6 @@
 $graph:
 - class: Workflow
-  label: Landsat-8 pan-sharpening  
+  label: Landsat-8 pan-sharpening 
   doc: Landsat-8 pan-sharpening  
   id: main
 
@@ -10,9 +10,6 @@ $graph:
   inputs:
     stac_item: 
       doc: Landsat-8 item
-      type: string
-    aoi: 
-      doc: area of interest as a bounding box
       type: string
     xs_bands: 
       type: string[]
@@ -53,41 +50,14 @@ $graph:
 
       out:
         - asset_href
-
-    node_subset_xs:
-
-      run: translate.cwl  
-
-      in: 
-        asset: 
-          source: node_stac_xs/asset_href
-        bbox: aoi
-
-      out:
-      - tifs
-        
-      scatter: asset
-      scatterMethod: dotproduct
-
-    node_subset_p:
-
-      run: translate.cwl  
-
-      in: 
-        asset: 
-          source: node_stac_p/asset_href
-        bbox: aoi
-
-      out:
-      - tifs
-        
+            
     node_concatenate:
     
       run: concatenate.cwl
 
       in:
         tifs: 
-          source: [node_subset_xs/tifs]
+          source: [node_stac_xs/asset_href]
       
       out:
       - xs_stack
@@ -100,7 +70,7 @@ $graph:
         xs:
           source: [node_concatenate/xs_stack]
         pan:
-          source: [node_subset_p/tifs]
+          source: [node_stac_p/asset_href]
       
       out:
       - pan-sharpened
