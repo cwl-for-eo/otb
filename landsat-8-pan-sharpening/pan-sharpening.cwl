@@ -6,6 +6,8 @@ $graph:
 
   requirements:
   - class: ScatterFeatureRequirement
+  - class: MultipleInputFeatureRequirement
+
 
   inputs:
     stac_item: 
@@ -14,9 +16,15 @@ $graph:
     aoi: 
       doc: area of interest as a bounding box
       type: string
-    xs_bands: 
-      type: string[]
-      default: ["B4", "B3", "B2"]
+    red: 
+      type: string
+      default: "B4"
+    green: 
+      type: string
+      default: "B3"
+    blue: 
+      type: string
+      default: "B2"
     p_band:
       type: string
       default: "B8"
@@ -35,7 +43,7 @@ $graph:
         
       in:
         stac_item: stac_item
-        asset: xs_bands
+        asset: [red, green, blue]
 
       out:
         - asset_href
