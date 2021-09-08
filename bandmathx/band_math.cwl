@@ -3,7 +3,7 @@ class: CommandLineTool
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement: 
-    dockerPull: terradue/otb-7.2.0
+    dockerPull: docker.io/terradue/otb-7.2.0
 
 baseCommand: otbcli_BandMathX
 arguments: 
