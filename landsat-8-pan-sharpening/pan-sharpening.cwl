@@ -48,7 +48,7 @@ $graph:
       out:
         - asset_href
 
-      scatter: asset
+      scatter: asset_href
       scatterMethod: dotproduct 
     
     node_stac_p:
@@ -67,14 +67,14 @@ $graph:
       run: translate.cwl  
 
       in: 
-        asset: 
+        asset_href: 
           source: node_stac_xs/asset_href
         bbox: aoi
 
       out:
       - tifs
         
-      scatter: asset
+      scatter: asset_href
       scatterMethod: dotproduct
 
     node_subset_p:
