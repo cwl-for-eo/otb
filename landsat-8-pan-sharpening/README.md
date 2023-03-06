@@ -1,9 +1,8 @@
 # Landsat-8 pan-sharpening
 
-Pan-sharpening is a technique that combines the high-resolution detail from a panchromatic band with the lower-resolution color information of other bands (usually only the visible bands).
+## Goal
 
-CWL is used to orchestrate the steps required to create a pan-sharpened Landsat-8 RGB composite.
-
+Use CWL to orchestrate the steps required to create a pan-sharpened Landsat-8 RGB composite.
 
 ## Steps 
 
@@ -34,7 +33,7 @@ The `CommandLineTool` uses `curl` and `jq` to get the Landsat-8 STAC Item and pa
 
 ```yaml
 --8<--
-otb/landsat-8-mosaic/asset.cwl
+otb/landsat-8-pan-sharpening/asset.cwl
 --8<--
 ```
 
@@ -44,7 +43,7 @@ These steps invoke GDAL's `gdal_translate` to clip the COG to tha area of intere
 
 ```yaml
 --8<--
-otb/landsat-8-mosaic/translate.cwl
+otb/landsat-8-pan-sharpening/translate.cwl
 --8<--
 ```
 
@@ -52,7 +51,7 @@ otb/landsat-8-mosaic/translate.cwl
 
 ```yaml
 --8<--
-otb/landsat-8-mosaic/concatenate.cwl
+otb/landsat-8-pan-sharpening/concatenate.cwl
 --8<--
 ```
 
@@ -60,15 +59,15 @@ otb/landsat-8-mosaic/concatenate.cwl
 
 ```yaml
 --8<--
-otb/landsat-8-mosaic/bundle_to_perfect.cwl
+otb/landsat-8-pan-sharpening/bundle_to_perfect.cwl
 --8<--
 ```
 
-## Worflow
+## Workflow
 
 ```yaml
 --8<--
-otb/landsat-8-mosaic/pan-sharpening.cwl
+otb/landsat-8-pan-sharpening/pan-sharpening.cwl
 --8<--
 ```
 
@@ -78,7 +77,7 @@ The file `pan-sharpening.yml` contains the parameters to invoke the CWL Workflow
 
 ```yaml
 --8<--
-otb/landsat-8-mosaic/pan-sharpening.yml
+otb/landsat-8-pan-sharpening/pan-sharpening.yml
 --8<--
 ```
 

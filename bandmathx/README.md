@@ -1,6 +1,8 @@
 # BandMathX
 
-The command wrapped by the CWL `CommandLineTool` is:
+## Objective
+
+This tutorial targets creating a CWL document wrapping the Orfeo Toolbox (OTB) `octbcli-BandMathX`:
 
 ```console
  otbcli_BandMathX \
@@ -14,16 +16,26 @@ The command wrapped by the CWL `CommandLineTool` is:
     /vsicurl/https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/53/H/PA/2021/7/S2B_53HPA_20210723_0_L2A/SCL.tif
 ```
 
-The CWL document content is:
+Use an editor to create the file `band_math.cwl` and copy/paste the CWL content below:
 
 ```yaml
---8<-- otb/bandmathx/band_math.cwl
+--8<--
+otb/bandmathx/band_math.cwl
+--8<--
 ```
 
-It may be run with the parameters:
+Now create the parameters file `band_math.yml` with:
 
 ```yaml
---8<-- otb/bandmathx/band_math.yml
+--8<--
+otb/bandmathx/band_math.yml
+--8<--
+```
+
+Use `cwltool` to trigger an execution:
+
+```console
+cwltool band_math.cwl band_math.yml
 ```
 
 The execution will generate:
@@ -77,3 +89,4 @@ INFO [job band_math.cwl] completed success
 }
 INFO Final process status is success
 ```
+
